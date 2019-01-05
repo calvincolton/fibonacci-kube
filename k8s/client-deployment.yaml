@@ -2,17 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: client-deployment
-specs:
+spec:
   replicas: 3
   selector:
     matchLabels:
       component: web
   template:
     metadata:
-      label:
+      labels:
         component: web
     spec:
-      - name: client
-        image: calvincolton/fibonacci-client
-        ports:
-          - containerPort: 3000
+      containers:
+        - name: client
+          image: calvincolton/fibonacci-client
+          ports:
+            - containerPort: 3000
